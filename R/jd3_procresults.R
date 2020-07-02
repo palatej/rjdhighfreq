@@ -1,4 +1,4 @@
-#' @nclude jd3_rslts.R
+#' @include jd3_rslts.R
 #' @import rJava
 NULL
 

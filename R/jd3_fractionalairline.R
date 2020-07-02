@@ -56,7 +56,7 @@ fractionalAirlineDecomposition<-function(y, period, adjust=T, sn=F){
 #' @export
 #'
 #' @examples
-fractionalAirlineEstimation<-function(y, periods, x = NULL, mean = FALSE, outliers=NULL, criticalValue=6, precision=1e-12){
+fractionalAirlineEstimation<-function(y, periods, x = NULL, mean = FALSE, outliers=NULL, criticalValue=6, precision=1e-12, approximateHessian=F){
   checkmate::assertNumeric(y, null.ok = F)
   checkmate::assertNumeric(criticalValue, len = 1, null.ok = F)
   checkmate::assertNumeric(precision, len = 1, null.ok = F)
@@ -66,7 +66,7 @@ fractionalAirlineEstimation<-function(y, periods, x = NULL, mean = FALSE, outlie
   else
     joutliers=.jarray(outliers, "java.lang.String")
   jrslt<-.jcall("demetra/highfreq/r/FractionalAirlineProcessor", "Ldemetra/highfreq/FractionalAirlineEstimation;", "estimate", as.numeric(y), matrix_r2jd(x), mean, .jarray(periods), joutliers
-                , criticalValue, precision)
+                , criticalValue, precision, approximateHessian)
   model<-list(
     y=as.numeric(y),
     variables=proc_vector(jrslt, "variables"),

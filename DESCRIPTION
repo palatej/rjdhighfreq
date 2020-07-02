@@ -1,18 +1,18 @@
 Package: rjdhf
 Type: Package
 Title: High-frequency modelling
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: as.person(c(
     "Jean Palate <jean.palate@nbb.be> [aut,cre]"
       ))
 Description: This package provides routines for high frequency series.
 License: EUPL
-URL: https://github.com/jdemetra/RJDemetra3
-BugReports: https://github.com/jdemetra/RJDemetra3/issues
+URL: https://github.com/palatej/rjdhighfreq
+BugReports: https://github.com/palatej/rjdighfreq/issues
 LazyData: true
 SystemRequirements: java (>= 1.8)
 Depends: R (>= 3.5.0), rJava (>= 0.9-8)
-Imports: checkmate, zoo
+Imports: checkmate
 Suggests: testthat, knitr, shiny, dygraphs, rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0
@@ -20,16 +20,16 @@ Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Collate: 
     'jd3_ts.R'
+    'jd3_rslts.R'
     'jd3_procresults.R'
     'jd3_holidays.R'
     'holidays.R'
     'jd3_fractionalairline.R'
-    'jd3_rslts.R'
     'jd3_stl.R'
     'jd3_utility.R'
     'jd3_x11.R'
     'zzz.R'
 NeedsCompilation: no
-Packaged: 2019-11-04 15:25:28 UTC; vackier
+Packaged: 2019-11-04 15:25:28 UTC; palatej
 Author: Jean Palate [aut, cre]
 Maintainer: Jean Palate <jean.palate@nbb.be>
