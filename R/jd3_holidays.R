@@ -1,12 +1,11 @@
-#' @include jd3_procresults.R jd3_ts.R
+#' @include jd3_rslts.R jd3_ts.R
 #' @import rJava
 NULL
- 
+
 setClass(
   Class="JD3_Holidays",
-  contains = "JD3_Object"
+  representation = representation(internal = "jobjRef" )
 )
-
 
 setGeneric(name="add", def = function( object, item, ...){standardGeneric("add")})
 

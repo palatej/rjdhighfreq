@@ -1,4 +1,4 @@
-#' @nclude jd3_procresults.R
+#' @nclude jd3_rslts.R
 #' @import rJava
 NULL
 

@@ -11,7 +11,8 @@ fractionalAirlineEstimation(
   mean = FALSE,
   outliers = NULL,
   criticalValue = 6,
-  precision = 1e-12
+  precision = 1e-12,
+  approximateHessian = F
 )
 }
 \arguments{
