@@ -6,28 +6,60 @@ NULL
 #' Title
 #'
 #' @param y 
-#' @param period 
-#' @param adjust 
-#' @param sn 
+#' @param period Period of the seasonal component
+#' @param adjust True if an actual fractional airline model is used. False if the period is rounded to the nearest integer
+#' @param sn Signal/noise decomposition. The signal is the seasonally adjusted series and the noise the seasonal component
+#' @param stde True if standard deviations of the components must be computed. In some cases (memory limits), it is currently not possible to compute them
 #'
 #' @return
 #' @export
 #'
 #' @examples
-fractionalAirlineDecomposition<-function(y, period, adjust=T, sn=F){
+fractionalAirlineDecomposition<-function(y, period, adjust=T, sn=F, stde=F){
   checkmate::assertNumeric(y, null.ok = F)
   checkmate::assertNumeric(period, len = 1, null.ok = F)
   checkmate::assertLogical(adjust, len = 1, null.ok = F)
   checkmate::assertLogical(sn, len = 1, null.ok = F)
-  jrslt<-.jcall("demetra/highfreq/r/FractionalAirlineProcessor", "Ldemetra/highfreq/FractionalAirlineDecomposition;", "decompose", as.numeric(y), period, adjust, sn)
+  jrslt<-.jcall("demetra/highfreq/r/FractionalAirlineProcessor", "Ldemetra/highfreq/FractionalAirlineDecomposition;", "decompose", as.numeric(y), period, adjust, sn, stde)
   
-  decomposition<-list(
-    y=as.numeric(y),
-    t=proc_vector(jrslt, "t"),
-    sa=proc_vector(jrslt, "sa"),
-    s=proc_vector(jrslt, "s"),
-    i=proc_vector(jrslt, "i")
-  )
+  if (sn){
+    if (stde){
+      decomposition<-list(
+        y=as.numeric(y),
+        sa=proc_vector(jrslt, "sa"),
+        s=proc_vector(jrslt, "s"),
+        s.stde=proc_vector(jrslt, "s_stde")
+        )
+    }else{
+      decomposition<-list(
+        y=as.numeric(y),
+        sa=proc_vector(jrslt, "sa"),
+        s=proc_vector(jrslt, "s")
+      )
+    }
+  }else{
+    if (stde){
+      decomposition<-list(
+        y=as.numeric(y),
+        t=proc_vector(jrslt, "t"),
+        sa=proc_vector(jrslt, "sa"),
+        s=proc_vector(jrslt, "s"),
+        i=proc_vector(jrslt, "i"),
+        t.stde=proc_vector(jrslt, "t_stde"),
+        s.stde=proc_vector(jrslt, "s_stde"),
+        i.stde=proc_vector(jrslt, "i_stde")
+      )
+    }else{
+      decomposition<-list(
+        y=as.numeric(y),
+        t=proc_vector(jrslt, "t"),
+        sa=proc_vector(jrslt, "sa"),
+        s=proc_vector(jrslt, "s"),
+        i=proc_vector(jrslt, "i")
+      )
+      
+    }
+  }
   estimation<-list(
     parameters=proc_vector(jrslt, "parameters"),
     score=proc_vector(jrslt, "score"),

@@ -4,16 +4,18 @@
 \alias{fractionalAirlineDecomposition}
 \title{Title}
 \usage{
-fractionalAirlineDecomposition(y, period, adjust = T, sn = F)
+fractionalAirlineDecomposition(y, period, adjust = T, sn = F, stde = F)
 }
 \arguments{
 \item{y}{}
 
-\item{period}{}
+\item{period}{Period of the seasonal component}
 
-\item{adjust}{}
+\item{adjust}{True if an actual fractional airline model is used. False if the period is rounded to the nearest integer}
 
-\item{sn}{}
+\item{sn}{Signal/noise decomposition. The signal is the seasonally adjusted series and the noise the seasonal component}
+
+\item{stde}{True if standard deviations of the components must be computed. In some cases (memory limits), it is currently not possible to compute them}
 }
 \value{
 
