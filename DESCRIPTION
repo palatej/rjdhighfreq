@@ -1,7 +1,7 @@
 Package: rjdhf
 Type: Package
 Title: High-frequency modelling
-Version: 0.0.3
+Version: 0.0.4
 Authors@R: as.person(c(
     "Jean Palate <jean.palate@nbb.be> [aut,cre]"
       ))
@@ -15,7 +15,7 @@ Depends: R (>= 3.5.0), rJava (>= 0.9-8)
 Imports: checkmate
 Suggests: testthat, knitr, shiny, dygraphs, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Collate: 

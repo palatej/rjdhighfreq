@@ -4,7 +4,15 @@
 \alias{fractionalAirlineDecomposition}
 \title{Title}
 \usage{
-fractionalAirlineDecomposition(y, period, adjust = T, sn = F, stde = F)
+fractionalAirlineDecomposition(
+  y,
+  period,
+  adjust = T,
+  sn = F,
+  stde = F,
+  nbcasts = 0,
+  nfcasts = 0
+)
 }
 \arguments{
 \item{y}{}
@@ -16,6 +24,10 @@ fractionalAirlineDecomposition(y, period, adjust = T, sn = F, stde = F)
 \item{sn}{Signal/noise decomposition. The signal is the seasonally adjusted series and the noise the seasonal component}
 
 \item{stde}{True if standard deviations of the components must be computed. In some cases (memory limits), it is currently not possible to compute them}
+
+\item{nbcasts}{Number of backcasts}
+
+\item{nfcasts}{Number of forecasts}
 }
 \value{
 
